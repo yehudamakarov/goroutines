@@ -12,6 +12,10 @@ import (
 )
 
 func main() {
+	//
+}
+
+func getImageFromEbay() {
 	res, err := http.Get("https://i.ebayimg.com/thumbs/images/g/j1wAAOSwujZiUMBu/s-l225.jpg")
 	if err != nil {
 		log.Fatal(fmt.Errorf("couldn't get image from ebay: %w", err))
@@ -87,7 +91,9 @@ func goUploadImages(images chan string, lengthOfItems int) chan string {
 	return imageUrls
 }
 
-func uploadImages(images chan string, imageUrls chan string, lengthOfItems int) {
+func uploadImages(
+	images chan string, imageUrls chan string, lengthOfItems int,
+) {
 	var wg sync.WaitGroup
 	wg.Add(lengthOfItems)
 
